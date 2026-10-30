@@ -39,7 +39,7 @@ Tips:
 - `cliphist`
   - Used in Hyprland and Quickshell config.
 - `cmake`
-  - Used in building quickshell and MicroTeX.
+  - Build tool.
 - `curl`
   - Used in Quickshell config.
 - `wget`
@@ -59,6 +59,9 @@ Tips:
 - `adw-gtk-theme-git`
   - [source](https://github.com/lassekongo83/adw-gtk3)
   - Used in Quickshell config.
+- `bibata-cursor-theme-bin`
+  - [source](https://github.com/ful1e5/Bibata_Cursor)
+  - Used in Hyprland config.
 - `breeze`
   - Used in kdeglobals config.
 - `breeze-plus`
@@ -195,40 +198,22 @@ Tips:
   - Used in Quickshell config, providing math ability in searchbar.
   - Note that `qalc` is the needed executable. In Arch Linux [libqalculate](https://archlinux.org/packages/extra/x86_64/libqalculate) provides it, but in Fedora [qalculate](https://packages.fedoraproject.org/pkgs/libqalculate/qalculate/fedora-43.html#files) does and [libqalculate](https://packages.fedoraproject.org/pkgs/libqalculate/libqalculate/fedora-43.html#files) does not.
 
-
-# Actual packages
-## illogical-impulse-quickshell-git
-- Pinned commit.
-- Also with extra dependencies (mainly Qt things) needed by the illogical-impulse Quickshell config.
-
-Extra dependencies.
-- `qt6-base`
-- `qt6-declarative`
-- `qt6-5compat`
-- `qt6-avif-image-plugin`
-- `qt6-imageformats`
-- `qt6-multimedia`
-- `qt6-positioning`
-- `qt6-quicktimeline`
-- `qt6-sensors`
-- `qt6-svg`
-- `qt6-tools`
-- `qt6-translations`
-- `qt6-virtualkeyboard`
-- `qt6-wayland`
-- `kirigami`
-- `kdialog`
-- `syntax-highlighting`
-- `vulkan-headers`
-- `libdrm`
-- `cpptrace`
-- `jemalloc`
-- `mesa`
-
-## illogical-impulse-bibata-modern-classic-bin
-- [source](https://github.com/ful1e5/Bibata_Cursor)
-- Used in Hyprland config, not necessary.
-
-## illogical-impulse-microtex-git
-- [source](https://github.com/NanoMichael/MicroTeX)
-- This package will be installed as `/opt/MicroTeX`.
+## illogical-impulse-quickshell
+- `quickshell`
+  - From Arch Linux `[extra]` repository.
+- Also with extra dependencies (mainly Qt things) needed by the illogical-impulse Quickshell config:
+  - `qt6-5compat`
+  - `qt6-avif-image-plugin`
+  - `qt6-imageformats`
+  - `qt6-multimedia`
+  - `qt6-positioning`
+  - `qt6-quicktimeline`
+  - `qt6-sensors`
+  - `qt6-svg`
+  - `qt6-tools`
+  - `qt6-translations`
+  - `qt6-virtualkeyboard`
+  - `qt6-wayland`
+  - `kirigami`
+  - `kdialog`
+  - `syntax-highlighting`
