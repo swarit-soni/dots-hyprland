@@ -9,6 +9,18 @@ local hyprScripts = "$HOME/.config/hypr/hyprland/scripts"
 local qsIpcCall = "qs -c $qsConfig ipc call"
 local qsIsAlive = qsIpcCall .. " TEST_ALIVE"
 
+-- Shell: Launcher toggle & release interruption
+hl.define_submap("global", function()
+    hl.bind("SUPER + catchall", hl.dsp.global("quickshell:searchToggleReleaseInterrupt"),
+        { transparent = true, non_consuming = true, ignore_mods = true })
+    hl.bind("CTRL + SUPER_L", hl.dsp.global("quickshell:searchToggleReleaseInterrupt"))
+    hl.bind("CTRL + SUPER_R", hl.dsp.global("quickshell:searchToggleReleaseInterrupt"))
+    for _, m in ipairs({ ":272", ":273", ":274", ":275", ":276", ":277", "_up", "_down" }) do
+        hl.bind("SUPER + mouse" .. m, hl.dsp.global("quickshell:searchToggleReleaseInterrupt"))
+    end
+end)
+hl.exec_cmd("hyprctl dispatch submap global")
+
 hl.bind("SUPER + SUPER_L", hl.dsp.global("quickshell:searchToggleRelease"), { description = "Shell: Toggle search" })
 hl.bind("SUPER + SUPER_R", hl.dsp.global("quickshell:searchToggleRelease"))
 hl.bind("SUPER + SUPER_L", hl.dsp.exec_cmd(qsIsAlive .. " || pkill fuzzel || fuzzel"))
