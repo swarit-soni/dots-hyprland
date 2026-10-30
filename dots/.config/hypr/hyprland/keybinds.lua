@@ -9,6 +9,39 @@ local hyprScripts = "$HOME/.config/hypr/hyprland/scripts"
 local qsIpcCall = "qs -c $qsConfig ipc call"
 local qsIsAlive = qsIpcCall .. " TEST_ALIVE"
 
+-- Shell: Launcher toggle on pure Super tap without chord interference
+local KEY_LEFTMETA = 133
+local KEY_RIGHTMETA = 134
+local superPressed = false
+local chordExecuted = false
+
+hl.on("input.keyboard.key", function(keycode, time, state)
+    if keycode == KEY_LEFTMETA or keycode == KEY_RIGHTMETA then
+        if state == 1 then
+            superPressed = true
+            chordExecuted = false
+        elseif state == 0 then
+            if superPressed and not chordExecuted then
+                hl.dispatch(hl.dsp.global("quickshell:searchToggle"))
+            end
+            superPressed = false
+            chordExecuted = false
+        end
+    else
+        if superPressed and state == 1 then
+            chordExecuted = true
+        end
+    end
+end)
+
+for _, m in ipairs({ ":272", ":273", ":274", ":275", ":276", ":277", "_up", "_down" }) do
+    hl.bind("SUPER + mouse" .. m, function()
+        chordExecuted = true
+    end, { transparent = true, non_consuming = true, ignore_mods = true })
+end
+
+hl.bind("SUPER + Tab", hl.dsp.global("quickshell:overviewWorkspacesToggle"), { description = "Shell: Toggle overview" })
+
 hl.bind("SUPER_L", hl.dsp.global("quickshell:workspaceNumber"), { ignore_mods = true, transparent = true })
 hl.bind("SUPER_R", hl.dsp.global("quickshell:workspaceNumber"), { ignore_mods = true, transparent = true })
 hl.bind("SUPER_L", hl.dsp.global("quickshell:workspaceNumber"),
